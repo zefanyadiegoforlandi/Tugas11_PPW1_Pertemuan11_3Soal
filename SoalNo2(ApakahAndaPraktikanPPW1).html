@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulir Praktikan PPW1</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulir Praktikan PPW1</h2>
+    <form>
+      <div class="form-group">
+        <label for="isPraktikan">Apakah Anda praktikan PPW1?</label>
+        <select class="form-control" id="isPraktikan">
+          <option value="yes">Ya</option>
+          <option value="no">Tidak</option>
+        </select>
+      </div>
+      <div id="formFields" >
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" class="form-control" id="nama" placeholder="Masukkan nama" value="">
+        </div>
+        <div class="form-group">
+          <label for="nim">NIM</label>
+          <input type="text" class="form-control" id="nim" placeholder="Masukkan NIM" value="">
+        </div>
+        <div class="form-group">
+          <label for="angkatan">Angkatan</label>
+          <input type="text" class="form-control" id="angkatan" placeholder="Masukkan angkatan" value="">
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+    </form>
+    <br>
+    <div id="result" style="display: none;">
+      <h3>Hasil:</h3>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Nama:</td>
+            <td id="resultNama"></td>
+          </tr>
+          <tr>
+            <td>NIM:</td>
+            <td id="resultNIM"></td>
+          </tr>
+          <tr>
+            <td>Angkatan:</td>
+            <td id="resultAngkatan"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function submitForm() {
+      var isPraktikan = document.getElementById('isPraktikan').value;
+      
+      if (isPraktikan === 'yes') {
+        var nama = document.getElementById('nama').value;
+        var nim = document.getElementById('nim').value;
+        var angkatan = document.getElementById('angkatan').value;
+        
+        // Menampilkan hasil dalam tabel
+        document.getElementById('resultNama').textContent = nama;
+        document.getElementById('resultNIM').textContent = nim;
+        document.getElementById('resultAngkatan').textContent = angkatan;
+        
+        document.getElementById('formFields').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+      } else {
+        document.getElementById('formFields').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('result').innerHTML = "<h3>Anda bukan praktikan PPW1, Anda tidak boleh masuk!</h3>";
+      }
+    }
+  </script>
+</body>
+</html>
